@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Robert\OrderRadio\Api\OrderKindRepositoryInterface" type="Robert\OrderRadio\Model\OrderKindRepository"/>
+	<preference for="Robert\OrderRadio\Api\Data\OrderKindInterface" type="Robert\OrderRadio\Model\Data\OrderKind"/>
+	<preference for="Robert\OrderRadio\Api\Data\OrderKindSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Robert\OrderRadio\Model\ResourceModel\OrderKind\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">robert_orderradio_orderkind</argument>
+			<argument name="resourceModel" xsi:type="string">Robert\OrderRadio\Model\ResourceModel\OrderKind\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="robert_orderradio_orderkind_listing_data_source" xsi:type="string">Robert\OrderRadio\Model\ResourceModel\OrderKind\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+		<plugin name="Robert_OrderRadio_Plugin_Magento_Checkout_Block_Checkout_LayoutProcessor" type="Robert\OrderRadio\Plugin\Magento\Checkout\Block\Checkout\LayoutProcessor" sortOrder="10" disabled="false"/>
+	</type>
+	<virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+		<arguments>
+			<argument name="columns" xsi:type="array">
+				<item name="order_kind" xsi:type="string">sales_order.order_kind</item>
+			</argument>
+		</arguments>
+	</virtualType>
+</config>

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="robert_orderradio_orderkind" resource="default" engine="innodb" comment="robert_orderradio_orderkind Table">
+		<column xsi:type="int" name="orderkind_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="orderkind_id"/>
+		</constraint>
+		<column name="name" nullable="true" xsi:type="varchar" comment="name" length="255"/>
+	</table>
+	<table name="sales_order">
+		<column name="order_kind" padding="10" unsigned="true" default="0" nullable="false" identity="false" xsi:type="int" comment="Order Kind"/>
+        <constraint xsi:type="foreign" referenceId="SALES_ORDER_ORDER_KIND_ROBERT_ORDERRADIO_ORDERKIND_ORDERKIND_ID" table="sales_order"
+                    column="order_kind" referenceTable="robert_orderradio_orderkind" referenceColumn="orderkind_id" onDelete="CASCADE"/>
+        <index referenceId="SALES_ORDER_ORDER_KIND" indexType="btree">
+            <column name="order_kind"/>
+        </index>
+	</table>
+	<table name="sales_order_grid">
+		<column name="order_kind" padding="10" unsigned="true" default="0" nullable="false" identity="false" xsi:type="int" comment="Order Kind"/>
+        <constraint xsi:type="foreign" referenceId="SALES_ORDER_GRID_ORDER_KIND_ROBERT_ORDERRADIO_ORDERKIND_ORDERKIND_ID" table="sales_order_grid"
+                    column="order_kind" referenceTable="robert_orderradio_orderkind" referenceColumn="orderkind_id" onDelete="CASCADE"/>
+        <index referenceId="SALES_ORDER_GRID_ORDER_KIND" indexType="btree">
+            <column name="order_kind"/>
+        </index>
+	</table>
+    <table name="quote">
+        <column name="quote_kind" padding="10" unsigned="true" default="0" nullable="false" identity="false" xsi:type="int" comment="Quote Kind"/>
+        <constraint xsi:type="foreign" referenceId="QUOTE_QUOTE_KIND_ROBERT_ORDERRADIO_ORDERKIND_ORDERKIND_ID" table="quote"
+                    column="quote_kind" referenceTable="robert_orderradio_orderkind" referenceColumn="orderkind_id" onDelete="CASCADE"/>
+        <index referenceId="QUOTE_QUOTE_KIND" indexType="btree">
+            <column name="quote_kind"/>
+        </index>
+    </table>
+</schema>

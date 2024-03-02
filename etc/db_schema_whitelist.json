@@ -1,0 +1,44 @@
+{
+    "robert_orderradio_orderkind": {
+        "column": {
+            "orderkind_id": true,
+            "name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "order_kind": true
+        },
+        "index": {
+            "SALES_ORDER_ORDER_KIND": true
+        },
+        "constraint": {
+            "SALES_ORDER_ORDER_KIND_ROBERT_ORDERRADIO_ORDERKIND_ORDERKIND_ID": true
+        }
+    },
+    "sales_order_grid": {
+        "column": {
+            "order_kind": true
+        },
+        "index": {
+            "SALES_ORDER_GRID_ORDER_KIND": true
+        },
+        "constraint": {
+            "FK_3CB2D8E85520BE77C6BA8AE60B00B192": true
+        }
+    },
+    "quote": {
+        "column": {
+            "quote_kind": true
+        },
+        "index": {
+            "QUOTE_QUOTE_KIND": true
+        },
+        "constraint": {
+            "QUOTE_QUOTE_KIND_ROBERT_ORDERRADIO_ORDERKIND_ORDERKIND_ID": true
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © Robert Konopka All rights reserved.
+ *
+ */
+
+/**
+ * @var \Robert\OrderRadio\Block\Adminhtml\Order\View\View $block
+ */
+?>
+<?php if($block->getLabel()) : ?>
+<section class="admin__page-section order-kind">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Rodzaj zamówienia')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item order-kind">
+            <address class="admin__page-section-item-content"><?= $block->getLabel(); ?></address>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
